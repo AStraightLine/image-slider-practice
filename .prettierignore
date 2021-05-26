@@ -1,4 +1,3 @@
 # Ignore artifacts:
 .gitignore
-.prettierignore
 node_modules
