@@ -44,3 +44,23 @@ body {
     filter: invert(1);
 }
 
+.slideLeft {
+    animation: slideLeft 1s ease-in-out 0s 1;
+}
+
+.slideRight {
+    animation: slideRight 1s ease-in-out 0s 1;
+}
+
+@keyframes slideLeft {
+    0% {
+        transform: translate(-425px, 0px) scale(0.75);
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translate(425px, 0px) scale(0.75);
+    }
+}
+

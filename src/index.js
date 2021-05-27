@@ -22,19 +22,20 @@ const removePreviousImgs = () => {
 const handleLeft = () => {
     position--;
     removePreviousImgs();
-    slide();
+    slide('slideLeft');
 }
 
 const handleRight = () => {
     position++;
     removePreviousImgs();
-    slide();
+    slide('slideRight');
 }
 
-const slide = () => {
+const slide = (direction) => {
     for (let i = 0; i < imageContainers.length; i++) {
         const img = document.createElement('img');
-        img.setAttribute('class', 'sliderImg');
+        img.classList.add('sliderImg');
+        img.classList.add(direction);
         if (i === 2) {
             img.setAttribute('id', 'sliderMainImg');
         }
