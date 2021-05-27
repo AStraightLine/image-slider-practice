@@ -20,22 +20,35 @@ const removePreviousImgs = () => {
 }
 
 const handleLeft = () => {
-    position--;
-    removePreviousImgs();
-    slide('slideLeft');
-}
-
-const handleRight = () => {
     position++;
     removePreviousImgs();
-    slide('slideRight');
-}
-
-const slide = (direction) => {
     for (let i = 0; i < imageContainers.length; i++) {
         const img = document.createElement('img');
         img.classList.add('sliderImg');
-        img.classList.add(direction);
+        img.classList.add('slideLeft');
+        if (i === 2) {
+            img.setAttribute('id', 'sliderMainImg');
+        }
+        if ((i + position <= imageContainers.length - 1)) {
+            img.setAttribute('src', 'resources/landscape' + (i + position) + '.jpg');
+        } else if ((i + position) > (imageContainers.length - 1)) {
+            img.setAttribute('src', 'resources/landscape' + ((i + position) - imageContainers.length) + '.jpg');
+        }
+        imageContainers[i].appendChild(img);
+    } 
+
+    if (position == (imageContainers.length - 1)) {
+        position = 0;
+    }
+}
+
+const handleRight = () => {
+    position--;
+    removePreviousImgs();
+    for (let i = 0; i < imageContainers.length; i++) {
+        const img = document.createElement('img');
+        img.classList.add('sliderImg');
+        img.classList.add('slideRight');
         if (i === 2) {
             img.setAttribute('id', 'sliderMainImg');
         }
@@ -49,9 +62,7 @@ const slide = (direction) => {
         imageContainers[i].appendChild(img);
     }
 
-    if (position == (imageContainers.length - 1)) {
-        position = 0;
-    } else if (position < 0) {
+    if (position < 0) {
         position = (imageContainers.length - 1);
     }
 }
