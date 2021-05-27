@@ -13,6 +13,26 @@ const initContainers = () => {
     }
 }
 
+const initPositionDisplay = () => {
+    for (let i = 0; i < imageContainers.length; i++) {
+        const dot = document.createElement('div');
+        dot.setAttribute('id', 'position' + i);
+        if (i === 2) {
+            dot.classList.toggle('currentPosition');
+        } else {
+            dot.classList.toggle('navDot');
+        }
+        dotNavContainer.appendChild(dot);
+    }
+}
+
+const updatePosition = () => {
+    console.log(position);
+    //const previous = document.getElementsByClassName('currentPosition');
+    //previous[0].classList.toggle('currentPosition');
+
+}
+
 const removePreviousImgs = () => {
     for (let i = 0; i < imageContainers.length; i++) {
         imageContainers[i].removeChild(imageContainers[i].lastChild);
@@ -37,6 +57,8 @@ const handleLeft = () => {
         imageContainers[i].appendChild(img);
     } 
 
+    updatePosition();
+
     if (position == (imageContainers.length - 1)) {
         position = 0;
     }
@@ -45,6 +67,9 @@ const handleLeft = () => {
 const handleRight = () => {
     position--;
     removePreviousImgs();
+    if (position < 0) {
+        position = (imageContainers.length - 1);
+    }
     for (let i = 0; i < imageContainers.length; i++) {
         const img = document.createElement('img');
         img.classList.add('sliderImg');
@@ -62,16 +87,31 @@ const handleRight = () => {
         imageContainers[i].appendChild(img);
     }
 
-    if (position < 0) {
-        position = (imageContainers.length - 1);
-    }
+    updatePosition();
 }
 
 let position = 0;
 
+const dotNavContainer = document.getElementById('dotNavContainer');
 let imageContainers = document.getElementsByClassName('sliderContainer');
 
 initContainers();
+initPositionDisplay();
 
 leftButton.addEventListener('click', handleLeft);
 rightButton.addEventListener('click', handleRight);
+
+window.addEventListener('keydown', (e) => {
+    let keyCode = e.key;
+
+    console.log(keyCode);
+
+    switch (keyCode) {
+        case 'ArrowLeft':
+            handleLeft();
+            break;
+        case 'ArrowRight':
+            handleRight();
+            break;
+    }
+});
