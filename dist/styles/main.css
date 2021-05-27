@@ -7,4 +7,40 @@ body {
     width: 100vw;
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(45, 51, 57, 1);
 }
+
+#sliderContainer {
+    width: 100vw;
+    height: 75vh;
+    background-color: rgba(30, 34, 38, 0.8);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.sliderContainer {
+    margin: 25px;
+    border: 2px solid white;
+    border-radius: 2px;
+}
+
+.sliderImg {
+    width: 300px;
+}
+
+#sliderMainImg {
+    width: 400px;
+}
+
+.sliderDirectionButton {
+    width: 25px;
+    height: 25px;
+    filter: invert(1);
+}
+
