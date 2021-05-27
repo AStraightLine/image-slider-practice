@@ -81,13 +81,13 @@ body {
 
 @keyframes slideLeft {
     0% {
-        transform: translate(425px, 0px) scale(0.75);
+        transform: translate(-425px, 0px) scale(0.75);
     }
 }
 
 @keyframes slideRight {
     0% {
-        transform: translate(-425px, 0px) scale(0.75);
+        transform: translate(425px, 0px) scale(0.75);
     }
 }
 
